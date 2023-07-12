@@ -24,9 +24,14 @@ public class SelectionSort {
                     swapIndex = j; // update index to swap
                 }
             }
-            array[swapIndex] = currValue; // perform swapping of current value and lowest value after
-            array[i] = minValue;// perform swapping of current value and lowest value after
+            swapValues(array, i, swapIndex);// perform swapping of current value and lowest value after
         }
         return array;
+    }
+
+    private static void swapValues(int[] array, int i, int swapIndex) {
+        int minValue = array[swapIndex];
+        array[swapIndex] = array[i];
+        array[i] = minValue;
     }
 }
