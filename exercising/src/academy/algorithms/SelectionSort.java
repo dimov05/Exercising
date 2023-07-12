@@ -5,12 +5,15 @@ import java.util.Random;
 
 public class SelectionSort {
     public static void main(String[] args) {
-        int[] array = new int[20];
+        int[] array = new int[100];
         Random random = new Random();
         for (int i = 0; i < array.length; i++) {
-            array[i] = random.nextInt(100);
+            array[i] = random.nextInt(100000);
         }
+        long startTime = System.currentTimeMillis();
         System.out.println(Arrays.toString(sortArrayUsingSelectionSort(array)));
+        long endTime = System.currentTimeMillis();
+        System.out.println("It took: " + (endTime - startTime) + "ms");
     }
 
     private static int[] sortArrayUsingSelectionSort(int[] array) {
