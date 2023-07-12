@@ -1,4 +1,4 @@
-package academy.edabit;
+package academy.codingBat;
 
 public class GetSandwich {
     public String getSandwich(String str) {

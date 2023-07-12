@@ -1,4 +1,4 @@
-package academy.edabit;
+package academy.codingBat;
 //
 //Return true if the string "cat" and "dog" appear the same number of times in the given string.
 //
