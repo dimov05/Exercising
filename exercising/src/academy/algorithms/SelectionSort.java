@@ -20,7 +20,7 @@ public class SelectionSort {
             int minValue = currValue; // store min Value in array after index 'i'
             for (int j = i + 1; j < array.length; j++) {
                 if (array[j] < minValue) {
-                    minValue = array[j]; //update minValue
+                    minValue = array[j]; //update minValue.
                     swapIndex = j; // update index to swap
                 }
             }
