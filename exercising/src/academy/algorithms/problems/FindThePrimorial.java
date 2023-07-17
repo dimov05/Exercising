@@ -12,7 +12,6 @@ package academy.algorithms.problems;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 public class FindThePrimorial {
     public static void main(String[] args) {
