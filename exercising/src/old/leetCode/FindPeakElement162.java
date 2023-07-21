@@ -23,11 +23,10 @@ public class FindPeakElement162 {
         int peak = 0;
 
         for (int i = 0; i < nums.length; i++) {
-            if (i == nums.length - 1) {
-                if (nums[i] > max) {
+            if (i == nums.length - 1 && (nums[i] > max)) {
                     peak = i;
                     break;
-                }
+
             }
             if (nums[i] > max && nums[i + 1] < nums[i]) {
                 peak = i;

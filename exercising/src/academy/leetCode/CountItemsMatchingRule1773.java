@@ -40,19 +40,22 @@ public class CountItemsMatchingRule1773 {
                 names.put(currName, 1);
             }
         }
-        switch(ruleKey){
-            case "color":
-                if(colors.containsKey(ruleValue)){
-                    count = colors.get(ruleValue);}
-                break;
-            case "type":
-                if(types.containsKey(ruleValue)){
-                    count = types.get(ruleValue);}
-                break;
-            case "name":
-                if(names.containsKey(ruleValue)){
-                    count = names.get(ruleValue);}
-                break;
+        switch (ruleKey) {
+            case "color" -> {
+                if (colors.containsKey(ruleValue)) {
+                    count = colors.get(ruleValue);
+                }
+            }
+            case "type" -> {
+                if (types.containsKey(ruleValue)) {
+                    count = types.get(ruleValue);
+                }
+            }
+            case "name" -> {
+                if (names.containsKey(ruleValue)) {
+                    count = names.get(ruleValue);
+                }
+            }
         }
         return count;
     }
