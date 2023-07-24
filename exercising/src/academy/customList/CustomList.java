@@ -1,8 +1,9 @@
 package academy.customList;
 
+import java.io.Serializable;
 import java.util.Arrays;
 
-public class CustomList<T> {
+public class CustomList<T> implements Serializable {
     private int size;
     private int CAPACITY = 10;
     private T[] elements;
