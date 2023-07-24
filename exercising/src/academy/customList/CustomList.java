@@ -43,6 +43,16 @@ public class CustomList<T> {
         }
         elements[size - 1] = null;
         size--;
+        if (size * 2 < CAPACITY) {
+            CAPACITY = CAPACITY * 2 / 3;
+            copyArrayOnCapacityChange();
+        }
+    }
+
+    private void copyArrayOnCapacityChange() {
+        T[] copyElements = (T[]) new Object[CAPACITY];
+        System.arraycopy(this.elements, 0, copyElements, 0, size);
+        this.elements = copyElements;
     }
 
     public void remove(T element) {

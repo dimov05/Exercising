@@ -1,8 +1,11 @@
 package academy.customList;
 
+import java.util.LinkedList;
+
 public class Main {
     public static void main(String[] args) {
         CustomList<String> cList = new CustomList<>();
+        LinkedList<String> ll = new LinkedList<>();
         cList.add("Test 1");
         cList.add("Test 2");
         cList.add("Test 3");
