@@ -19,19 +19,41 @@ public class CustomList<T> {
     }
 
     public void add(T element) {
-        if (size == CAPACITY) {
-            this.CAPACITY = CAPACITY * 3 / 2 + 1;
-            T[] copyElements = (T[]) new Object[CAPACITY];
-            if (size >= 0) System.arraycopy(this.elements, 0, copyElements, 0, size);
-            this.elements = copyElements;
-
-            //TODO: make larger array and copy elements into it
-        }
+        resizeIfSizeReachCapacity();
         if (element == null) {
             throw new NullPointerException("Can't add element null");
         }
         this.elements[size] = element;
         size++;
+    }
+
+    public void addByIndex(int index, T element) {
+        size++;
+        resizeIfSizeReachCapacity();
+        if (element == null) {
+            throw new NullPointerException("Can't add element null");
+        }
+        T elementToMoveForward = this.elements[index];
+        T tempElement;
+        this.elements[index] = element;
+        for (int i = index; i <= size; i++) {
+            if (i == index) {
+                this.elements[i] = element;
+            } else {
+                tempElement = this.elements[i];
+                this.elements[i] = elementToMoveForward;
+                elementToMoveForward = tempElement;
+            }
+        }
+    }
+
+    private void resizeIfSizeReachCapacity() {
+        if (size == CAPACITY) {
+            this.CAPACITY = CAPACITY * 3 / 2 + 1;
+            T[] copyElements = (T[]) new Object[CAPACITY];
+            if (size >= 0) System.arraycopy(this.elements, 0, copyElements, 0, size);
+            this.elements = copyElements;
+        }
     }
 
     public void remove(int indexToRemove) {
