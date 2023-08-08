@@ -23,17 +23,31 @@ from vehicle
 where horsePower  > 50;
 
 -- 4. Select all entities for one specific account (all vehicles, devices and periphs, even not related between)
-select
-	a.accountId as account_id,
-	a.accountName as account_name,
-	p.name  as periph_name,
-	d.extId as device_name,
-	v.plateNumber as plate_number
-from account as a 
-join periph as p on p.accountId = a.accountId 
-join device as d on d.deviceId  = p.deviceId 
-join vehicle as v on v.deviceId  = v.deviceId
-where a.accountId = 66;
+-- select
+-- 	a.accountId as account_id,
+-- 	a.accountName as account_name,
+-- 	count(p.name)  as periph_count,
+-- 	count(d.extId) as device_count,
+-- 	count(v.plateNumber) as vehicle_count
+-- from account as a 
+-- join periph as p on p.accountId = a.accountId 
+-- join device as d on d.accountId = a.accountId
+-- join vehicle as v on v.accountId  = a.accountId
+-- where a.accountId = 66;
+(select v.plateNumber, 'vehicle' as entity_type from vehicle as v where v.accountId = 66)
+union 
+(select d.extId, 'device' as entity_type from device as d where d.accountId = 66)
+union 
+(select p.name, 'periph' as entity_type from periph as p where p.accountId = 66);
+
+-- select * from 
+-- (select v.plateNumber,  from vehicle as v where v.accountId = 66) as vehicle
+-- cross join
+-- (select d.extId from device as d where d.accountId = 66) as device
+-- cross join 
+-- (select p.name from periph as p where p.accountId = 66) as periph;
+-- 
+-- select * from vehicle limit 20
 
 -- 5. Select all periphs for a specific vehicle, ordered by modification date descending
 
@@ -67,6 +81,9 @@ select d.deviceId, d.creationDate from device as d order by d.creationDate desc 
 
 select v.vehicleBrand ,v.plateNumber, v.horsePower from vehicle as v 
 order by v.horsePower asc limit 5;
+
+-- select v.vehicleBrand, v.plateNumber, MIN(v.horsePower) from vehicle as v
+-- group by v.vehicleId limit 5;
 
 -- 12. Select all the positions and vehicles, for which a specific user has been a driver
 
