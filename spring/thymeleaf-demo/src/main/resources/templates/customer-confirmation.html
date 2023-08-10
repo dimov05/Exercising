@@ -1,0 +1,16 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body th:object="${customer}">
+
+
+The customer is confirmed: <span th:text="*{firstName + ' ' + lastName} "/>
+<br></br>
+Postal code of customer: <span th:text="*{postalCode}"></span>
+<br></br>
+Free passes by this customer: <span th:text="*{freePasses}"></span>
+<br></br>
+Course code for this customer: <span th:text="*{courseCode}"></span>
+</body>
+
+</html>
