@@ -2,6 +2,9 @@ package com.realestateapp;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -13,25 +16,16 @@ class ApartmentRaterTest {
     private static final BigDecimal CHEAP_THRESHOLD = new BigDecimal(6000.0);
     private static final BigDecimal MODERATE_THRESHOLD = new BigDecimal(8000.0);
 
-    @Test
-    void should_ReturnCorrectRating_When_CorrectApartment() {
+    @ParameterizedTest
+    @CsvSource(value = {"30,120000,0", "30,190000,1", "30,280000,2"})
+    void should_ReturnCorrectRating_When_CorrectApartment(double area, BigDecimal price, int rating) {
         //given
-        Apartment apartment0 = new Apartment(30, new BigDecimal(120000));
-        Apartment apartment1 = new Apartment(30, new BigDecimal(190000));
-        Apartment apartment2 = new Apartment(30, new BigDecimal(280000));
-        int expected0 = 0;
-        int expected1 = 1;
-        int expected2 = 2;
+        Apartment apartment = new Apartment(area, price);
+        int expected = rating;
         //when
-        int actual0 = ApartmentRater.rateApartment(apartment0);
-        int actual1 = ApartmentRater.rateApartment(apartment1);
-        int actual2 = ApartmentRater.rateApartment(apartment2);
+        int actual = ApartmentRater.rateApartment(apartment);
         //then
-        assertAll(
-                () -> assertEquals(expected0, actual0),
-                () -> assertEquals(expected1, actual1),
-                () -> assertEquals(expected2, actual2)
-        );
+        assertEquals(expected, actual);
     }
 
     @Test
